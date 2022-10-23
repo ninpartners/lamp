@@ -264,5 +264,11 @@ include php-modules
 load_config
 rootness
 
+#
+sudo iptables -I INPUT -p tcp --dport 80 -j ACCEPT
+sudo ufw allow http
+sudo iptables -I INPUT -p tcp --dport 443 -j ACCEPT
+sudo ufw allow https
+
 #Run it
 main "$@" 2>&1 | tee ${cur_dir}/lamp.log
